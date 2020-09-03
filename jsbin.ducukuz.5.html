@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anca-maria-barbu (http://jsbin.com/ducukuz/5/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="Ceasul color">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"
+type="text/css">
+  <title>Color clock</title>
+<style id="jsbin-css">
+/* Resetarea setului de stiluri predefinite ale agentului utilizator */
+
+* { margin: 0; padding: 0; }
+
+
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  position: relative;
+  top:50%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 68px;
+  margin-top: -34px;
+}
+
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function colorClock(){
+  
+//codul pe care dorim sa-l rulam:
+
+var date = new Date();
+var hours = date.getHours();
+
+var minutes=date.getMinutes();
+
+var seconds=date.getSeconds();
+
+ // dacă
+// variabila 'seconds' este mai mică decât 10
+// ar trebui să fie un zero înainte de a o converti la text:
+  
+if(hours<10){
+  hours='0'+hours;
+}
+if(minutes<10){
+  minutes='0'+minutes;
+}
+if(seconds<10){
+  seconds='0'+seconds;
+}
+
+var clockFace=hours +':'+ minutes+':' + seconds;
+var hexColor='#'+seconds+hours+minutes;
+
+document.getElementById('clock').innerHTML = clockFace;
+document.body.style.background = hexColor;
+  
+  //Dorim să se ruleze codul în fiecare secundă/sau 1000 de milisecunde:
+
+  setTimeout(function() {
+  colorClock();
+}, 1000);
+
+}
+colorClock();
+
+</script>
+</body>
+</html>
